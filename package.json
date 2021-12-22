@@ -1,0 +1,19 @@
+{
+  "name": "prozyj--run",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "antd": "^4.17.4",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "scripts": {
+    "start": "react-scripts start index2.js",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "react-scripts": "latest"
+  }
+}
