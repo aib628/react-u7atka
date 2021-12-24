@@ -9,11 +9,12 @@ import RoleList from './role_list/index.js';
 import PermissionList from './permission_list/index.js';
 import FunctionList from './function_list/index.js';
 import UserGrants from './user_grants/index.js';
+import UserProjectGrants from './user_project_grants/index.js';
 
 const { TabPane } = Tabs;
 
 ReactDOM.render(
-  <Tabs type="line" defaultActiveKey="grants">
+  <Tabs type="line" defaultActiveKey="project_grants">
     <TabPane tab="Demo页面" key="demo">
       <Demo />
     </TabPane>
@@ -34,6 +35,9 @@ ReactDOM.render(
     </TabPane>
     <TabPane tab="用户权限页面" key="grants">
       <UserGrants />
+    </TabPane>
+    <TabPane tab="项目权限页面" key="project_grants">
+      <UserProjectGrants />
     </TabPane>
   </Tabs>,
   document.getElementById('container')

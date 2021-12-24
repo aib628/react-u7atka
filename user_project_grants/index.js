@@ -1,8 +1,8 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { Tabs } from 'antd';
+import { Tabs, Divider } from 'antd';
 import { Table, Card, Button } from 'antd';
-import { TreeSelect, Select, Form } from 'antd';
+import { TreeSelect, Select, Input, Form } from 'antd';
 
 const { TabPane } = Tabs;
 
@@ -19,21 +19,18 @@ const columns = [
     key: 'account',
   },
   {
-    title: '项目权限列表',
+    title: '项目角色',
     dataIndex: 'projects',
     key: 'projects',
-  },
-  {
-    title: '功能权限列表',
-    dataIndex: 'permissions',
-    key: 'permissions',
   },
   {
     title: '操作',
     key: 'action',
     render: (text, record) => (
       <span>
-        <a>详情</a>
+        <a>编辑</a>
+        <Divider type="vertical" />
+        <a>删除</a>
       </span>
     ),
   },
@@ -172,7 +169,14 @@ for (let i = 10; i < 36; i++) {
 export default () => {
   return (
     <div>
-      <Card title="用户权限管理">
+      <Card
+        title="用户权限管理"
+        extra={
+          <Button style={{ width: '100%' }} type="primary">
+            ＋ 新增项目成员
+          </Button>
+        }
+      >
         <Table
           columns={columns}
           dataSource={data}
@@ -187,80 +191,76 @@ export default () => {
         title="编辑用户权限 张三(zhangsan)"
         extra={
           <Button style={{ width: '100%' }} type="primary">
-            编辑或保存
+            保存
           </Button>
         }
       >
-        <Tabs type="line" defaultActiveKey="grants">
-          <TabPane tab="项目权限管理" key="project">
-            <Form labelCol={{ span: 5 }} wrapperCol={{ span: 12 }}>
-              <Form.Item label="项目列表">
-                <Select
-                  mode="single"
-                  style={{ width: '100%' }}
-                  placeholder="Please select"
-                  defaultValue={['a10', 'c12']}
-                >
-                  {projects}
-                </Select>
-              </Form.Item>
-              <Form.Item label="项目角色">
-                <Select
-                  mode="multiple"
-                  style={{ width: '100%' }}
-                  placeholder="Please select"
-                  defaultValue={['a10', 'c12']}
-                >
-                  {roles}
-                </Select>
-              </Form.Item>
-              <Form.Item label="Notebook权限">
-                <TreeSelect
-                  treeDefaultExpandAll
-                  treeData={notebooks}
-                  treeCheckable="true"
-                  showCheckedStrategy="SHOW_PARENT"
-                  style={{ width: '100%' }}
-                />
-              </Form.Item>
-            </Form>
-          </TabPane>
+        <Form labelCol={{ span: 5 }} wrapperCol={{ span: 12 }}>
+          <Form.Item label="项目列表">
+            <Select
+              mode="single"
+              disabled="true"
+              style={{ width: '100%' }}
+              placeholder="Please select"
+              defaultValue={['a10', 'c12']}
+            >
+              {projects}
+            </Select>
+          </Form.Item>
+          <Form.Item label="项目角色">
+            <Select
+              mode="multiple"
+              style={{ width: '100%' }}
+              placeholder="Please select"
+              defaultValue={['a10', 'c12']}
+            >
+              {roles}
+            </Select>
+          </Form.Item>
+          <Form.Item label="Notebook权限">
+            <TreeSelect
+              treeDefaultExpandAll
+              treeData={notebooks}
+              treeCheckable="true"
+              showCheckedStrategy="SHOW_PARENT"
+              style={{ width: '100%' }}
+            />
+          </Form.Item>
+        </Form>
+      </Card>
 
-          <TabPane tab="功能权限管理" key="permission">
-            <Form labelCol={{ span: 5 }} wrapperCol={{ span: 12 }}>
-              <Form.Item label="功能名称">
-                <Select
-                  mode="single"
-                  style={{ width: '100%' }}
-                  placeholder="Please select"
-                  defaultValue={['a10', 'c12']}
-                >
-                  {functions}
-                </Select>
-              </Form.Item>
-              <Form.Item label="分配角色">
-                <Select
-                  mode="multiple"
-                  style={{ width: '100%' }}
-                  placeholder="Please select"
-                  defaultValue={['a10', 'c12']}
-                >
-                  {roles}
-                </Select>
-              </Form.Item>
-              <Form.Item label="分配权限">
-                <Select
-                  mode="multiple"
-                  style={{ width: '100%' }}
-                  placeholder="Please select"
-                  defaultValue={['a10', 'c12']}
-                >
-                  {permissions}
-                </Select>
-              </Form.Item>
-            </Form>
-          </TabPane>
-        </Tabs>
+      <Card
+        title="新增项目成员"
+        extra={
+          <Button style={{ width: '100%' }} type="primary">
+            保存
+          </Button>
+        }
+      >
+        <Form labelCol={{ span: 5 }} wrapperCol={{ span: 12 }}>
+          <Form.Item label="域账号">
+            <Input />
+          </Form.Item>
+          <Form.Item label="项目角色">
+            <Select
+              mode="multiple"
+              style={{ width: '100%' }}
+              placeholder="Please select"
+              defaultValue={['a10', 'c12']}
+            >
+              {roles}
+            </Select>
+          </Form.Item>
+          <Form.Item label="Notebook权限">
+            <TreeSelect
+              treeDefaultExpandAll
+              treeData={notebooks}
+              treeCheckable="true"
+              showCheckedStrategy="SHOW_PARENT"
+              style={{ width: '100%' }}
+            />
+          </Form.Item>
+        </Form>
       </Card>
     </div>
   );
