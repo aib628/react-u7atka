@@ -27,8 +27,6 @@ const columns = [
     render: (text, record) => (
       <span>
         <a>编辑</a>
-        <Divider type="vertical" />
-        <a>删除</a>
       </span>
     ),
   },
