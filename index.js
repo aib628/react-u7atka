@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Tabs } from 'antd';
 
 import Demo from './demo/index.js';
+import FridaySDK from './friday_sdk/index.js';
 import SourceTab from './source_tab/index.js';
 import ConfigTool from './config_tool/index.js';
 import RoleList from './role_list/index.js';
@@ -14,9 +15,12 @@ import UserProjectGrants from './user_project_grants/index.js';
 const { TabPane } = Tabs;
 
 ReactDOM.render(
-  <Tabs type="line" defaultActiveKey="project_grants">
+  <Tabs type="line" defaultActiveKey="friday_sdk">
     <TabPane tab="Demo页面" key="demo">
       <Demo />
+    </TabPane>
+    <TabPane tab="FridaySDK页面" key="friday_sdk">
+      <FridaySDK />
     </TabPane>
     <TabPane tab="数据源页面" key="source">
       <SourceTab />
